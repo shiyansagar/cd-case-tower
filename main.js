@@ -530,6 +530,10 @@ canvas.addEventListener(
   { passive: false }
 );
 window.addEventListener('keydown', (e) => {
+  if ((e.key === 'g' || e.key === 'G') && !e.metaKey && !e.ctrlKey && !e.altKey && !e.target.closest?.('input, textarea')) {
+    togglePanel();
+    return;
+  }
   if (e.target.closest?.('input, button, .panel')) return;
   if (state.mode === 'tower') {
     if (e.key === 'ArrowUp') state.vel = clamp(state.vel - 1.2, -5, 5);
@@ -545,10 +549,11 @@ window.addEventListener('keydown', (e) => {
   }
 });
 const panelBtn = $('btn-panel');
-panelBtn.addEventListener('click', () => {
+const togglePanel = () => {
   const on = document.body.classList.toggle('panel-open');
   panelBtn.setAttribute('aria-expanded', String(on));
-});
+};
+panelBtn.addEventListener('click', togglePanel);
 // the panel is a floating window: drag it by its title bar
 {
   const win = $('panel');

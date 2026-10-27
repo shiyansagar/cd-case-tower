@@ -6,10 +6,10 @@
 export const DEFAULTS = Object.freeze({
   room: 'Light',
   background: '#FFFFFF',
-  zoom: 0.98,
+  zoom: 0.61,
   exposure: 1.0,
-  roomLight: 1.8,
-  lamp: 0.8,
+  roomLight: 1.68,
+  lamp: 0.99,
   clearPlastic: '#F4F7F8',
   plasticEdges: '#AEB8BC',
   edgeGlow: 0.06,
