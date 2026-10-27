@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>CD Case Tower</title>
+  <meta name="description" content="Albums in real 3D jewel cases: a floating tower you can scroll, hover and open.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:ital,wdth,wght@0,62..125,100..900;1,62..125,100..900&family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.169.0/build/three.module.js",
+        "three/addons/": "https://cdn.jsdelivr.net/npm/three@0.169.0/examples/jsm/",
+        "gsap": "https://cdn.jsdelivr.net/npm/gsap@3.12.5/index.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <div class="app">
+    <div class="main">
+
+      <main class="stage" id="stage">
+        <!-- the whole tower is drawn in WebGL on this canvas -->
+        <canvas id="gl" aria-hidden="true"></canvas>
+
+        <header class="top">
+          <div class="brand">
+            <p class="eyebrow">CD case</p>
+            <h1>Your albums, in real jewel cases</h1>
+          </div>
+          <div class="top__right">
+            <p class="meta mono"><span id="count">16 albums</span> &middot; <span id="status">Starting</span></p>
+            <button type="button" class="tweak" id="btn-panel" aria-expanded="false" aria-controls="panel">Parameters</button>
+          </div>
+        </header>
+
+        <div class="caption" id="caption" aria-live="polite">
+          <p class="eyebrow caption__kicker">
+            <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M10.5 1.8A6.5 6.5 0 1 0 14.2 11 5.2 5.2 0 0 1 10.5 1.8z" fill="currentColor"/></svg>
+            <span id="kicker">The collection</span>
+          </p>
+          <h2 id="cap-title">&nbsp;</h2>
+          <p class="caption__sub" id="cap-sub">&nbsp;</p>
+        </div>
+
+        <div class="foot">
+          <p class="hint" id="hint">Tap a case to open it &middot; scroll or drag to browse</p>
+          <div class="dock" id="dock" hidden>
+            <button type="button" id="btn-back">
+              <svg viewBox="0 0 16 16" width="12" height="12" aria-hidden="true"><path d="M10 3.5L5.5 8l4.5 4.5" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Collection
+            </button>
+            <button type="button" id="btn-flip" disabled>
+              <svg viewBox="0 0 16 16" width="13" height="13" aria-hidden="true"><path d="M3 6.5a5 5 0 0 1 9-1.8M13 9.5a5 5 0 0 1-9 1.8M12.2 2.2v2.6H9.6M3.8 13.8v-2.6h2.6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              Flip disc
+            </button>
+          </div>
+        </div>
+
+        <!-- keyboard / screen-reader access to every album -->
+        <nav class="sr-only" id="a11y" aria-label="Albums"></nav>
+      </main>
+    </div>
+
+    <aside class="panel" id="panel" aria-label="Parameters"></aside>
+  </div>
+
+  <noscript><p class="noscript">This page needs JavaScript and WebGL.</p></noscript>
+  <script type="module" src="main.js"></script>
+</body>
+</html>
